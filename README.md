@@ -4,12 +4,8 @@ Descripción del proyecto
 
 Simulador imperativo de exploración espacial desarrollado en Python para la asignatura SOFT-01 Principios de Programación 1 (Sección SCV6, Periodo 2026-C3, Universidad CENFOTEC). El programa integra el ciclo completo de gestión de misiones espaciales: planificación, cálculo de requerimientos, autorización de lanzamiento, simulación diaria de trayectos, exploración científica con registro en bitácora, evaluación de regreso o cálculo de supervivencia, generación de reportes finales ordenados, historial de misiones, búsqueda por nombre y estadísticas generales.
 
-Integrantes del grupo (3 personas)
-
+Estudiantes:
 Roberto Ulate Antonieta
-
-María Fernanda Loría Campos
-
 Sofía Cabas Madrigal
 
 Convenciones y estilos de programación utilizados
