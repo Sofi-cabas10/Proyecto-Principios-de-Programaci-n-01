@@ -1,37 +1,38 @@
-# Proyecto-Principios-de-Programaci-n-01
-Proyecto de la exploración científica por Roberto Ulate y Sofía Cabas
+Sistema Integrado Misión Órbita
 
-# Instrucciones
+Descripción del proyecto
 
-Implementar los siguientes programas en Python, cada uno en un archivo por separado. Para
-poder obtener la calificación total de esta asignación, las siguientes reglas son obligatorias:
+Simulador imperativo de exploración espacial desarrollado en Python para la asignatura SOFT-01 Principios de Programación 1 (Sección SCV6, Periodo 2026-C3, Universidad CENFOTEC). El programa integra el ciclo completo de gestión de misiones espaciales: planificación, cálculo de requerimientos, autorización de lanzamiento, simulación diaria de trayectos, exploración científica con registro en bitácora, evaluación de regreso o cálculo de supervivencia, generación de reportes finales ordenados, historial de misiones, búsqueda por nombre y estadísticas generales.
 
-1. Debe entregar una tabla de variables por cada ejercicio, siguiendo el estándar descrito
-en la sección “Estándares de la entrega”.
-2. Debe entregar un diagrama de flujo por cada ejercicio, que siga la notación y el
-estándar vistos en clase. Puede usar cualquier herramienta, pero debe asegurarse de
-que cumpla con el estándar del curso y de la Universidad.
-3. Debe entregar el código en archivos .py elaborados con Visual Studio Code. No se
-aceptarán archivos en formato de Google Colab (.ipynb).
-4. Debe entregar los casos de prueba de cada ejercicio con su evidencia de ejecución.
-5. Debe entregar el enlace al repositorio Git con el historial de desarrollo.
+Integrantes del grupo (3 personas)
 
-# Ejercicio 5: Selección del destino y autorización de la misión
+Roberto Ulate Antonieta
 
-En el primer avance la duración del viaje era un dato de entrada. En este ejercicio el usuario
-selecciona un destino y el programa determina automáticamente la duración del viaje de ida
-mediante una condicional múltiple. Luego, mediante una condicional anidada, decide si la
-misión puede autorizarse con los recursos disponibles
+María Fernanda Loría Campos
 
-# Ejercicio 6: Simulación del viaje hacia el destino
+Sofía Cabas Madrigal
 
-El programa debe utilizar un ciclo para representar el paso de los días. Cada iteración
-equivale a un día de viaje y modifica el estado de los recursos. La condición del ciclo debe
-considerar tanto los días pendientes como la posibilidad de continuar la misión (por ejemplo,
-mediante una variable booleana).
+Convenciones y estilos de programación utilizados
 
-# Ejercicio 7: Actividades de exploración científica
+Paradigma imperativo estructurado: Modularización mediante funciones con parámetros y un único return al final de cada función que devuelve valor.
 
-Este programa representa la etapa de exploración: inicia con la energía y las provisiones que
-tiene la nave al llegar al destino y presenta un menú de actividades que se repite. 
+Estructuras de datos: Uso exclusivo de listas, tuplas y matrices (sin diccionarios, conjuntos, objetos ni librerías externas).
 
+Nomenclatura: Variables y funciones en snake_case en minúscula; constantes globales al inicio del archivo en MAYÚSCULAS_CON_GUION_BAJO, incluyendo constantes de posición para evitar números mágicos.
+
+Control de flujo: Ciclos terminados únicamente mediante sus condiciones lógicas (sin break, continue, exit() ni quit()), contadores y acumuladores explícitos, y ordenamiento mediante sorted() con funciones clave nombradas.
+
+Formato y documentación: Indentación uniforme de 4 espacios, encabezado institucional completo y comentarios descriptivos por bloque lógico.
+
+Instrucciones para ejecutar el sistema
+
+Asegúrese de contar con Python 3 instalado en su equipo.
+
+Abra una terminal en la carpeta avance3/ donde se ubica el archivo mision_orbita.py (o ábralo desde Visual Studio Code).
+
+Ejecute el comando:
+
+python mision_orbita.py
+
+
+Siga las instrucciones en consola seleccionando las opciones numéricas del menú principal (1 a 5) e ingresando valores enteros positivos según lo solicite cada etapa de la misión.
