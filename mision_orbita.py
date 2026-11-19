@@ -293,3 +293,283 @@ else:
         
     dias_completados = dia_actual - 1
     print("Días completados:", dias_completados)
+
+# ============================================================
+# Archivo: ejercicio7viaje.py
+# Curso: SOFT-01 Principios de Programación 1 - Sección SCV6
+# Integrantes: Sofía Cabas, Roberto Ulate
+# Fecha: 8/11/2026       Versión: 1.0
+# Descripción: Administrar los recursos y las actividades científicas realizadas durante la exploración.
+# ============================================================
+
+# Declaración de constantes
+
+OPCION_ANALIZAR = 1
+OPCION_RECOLECTAR = 2
+OPCION_OBSERVACION = 3
+OPCION_FINALIZAR = 4 
+
+ENERGIA_ANALIZAR = 8
+ENERGIA_RECOLECTAR = 12
+ENERGIA_OBSERVACION = 5
+
+PROVISIONES_ANALIZAR = 0
+PROVISIONES_RECOLECTAR = 2
+PROVISIONES_OBSERVACION = 0
+
+PUNTOS_ANALIZAR = 10
+PUNTOS_RECOLECTAR = 20
+PUNTOS_OBSERVACION = 8
+
+# Datos de entrada
+
+energia_disponible = int(input("Ingrese la cantidad de energía disponible al llegar al destino: "))
+
+provisiones_disponibles = int(input("Ingrese la cantidad de provisiones disponibles al llegar al destino: "))
+
+# Contadores 
+
+puntos_cientificos = 0
+
+actividades_realizadas = 0
+
+muestras_recolectadas = 0
+
+# Variable de control
+
+exploracion_activa = True
+
+# Procesamientos
+
+# Ciclo de actividades
+
+while exploracion_activa == True:
+    
+    print("\n--- Actividades de exploración científica ---")
+    
+    print("1. Analizar terreno")
+    print("2. Recolectar muestra")
+    print("3. Realizar observación")
+    print("4. Finalizar exploración")
+
+    selecion_actividad = int(input("Selecione una actividad (1,2,3,4): "))
+
+# Contador de actividades
+    
+    actividad_seleccionada = 0
+
+# La actividad escogida
+
+    if selecion_actividad == OPCION_ANALIZAR:
+       
+       nombre_actividad = "Analizar terreno"
+       consumo_energia = ENERGIA_ANALIZAR
+       consumo_provisiones = PROVISIONES_ANALIZAR
+       puntos_actividad = PUNTOS_ANALIZAR
+
+       actividad_seleccionada = 1
+
+    elif selecion_actividad == OPCION_RECOLECTAR:
+        
+        nombre_actividad = "Recolectar muestra"
+        consumo_energia = ENERGIA_RECOLECTAR
+        consumo_provisiones = PROVISIONES_RECOLECTAR
+        puntos_actividad = PUNTOS_RECOLECTAR
+
+        actividad_seleccionada = 1
+
+    elif selecion_actividad == OPCION_OBSERVACION:
+        
+        nombre_actividad = "Realizar observación"
+        consumo_energia = ENERGIA_OBSERVACION
+        consumo_provisiones = PROVISIONES_OBSERVACION
+        puntos_actividad = PUNTOS_OBSERVACION
+
+        actividad_seleccionada = 1
+
+    elif selecion_actividad == OPCION_FINALIZAR:
+
+        print("Exploración finalizada por la tripulación.")
+        exploracion_activa = False
+
+    else: 
+
+        print("Opción no valida. Debe ingresar: 1, 2, 3 o 4")
+
+# Verificar recursos y realizar actividad
+   
+    if actividad_seleccionada == 1:
+
+        if energia_disponible >= consumo_energia and provisiones_disponibles >= consumo_provisiones:
+
+# Procesos aritméticos
+          
+          energia_disponible = energia_disponible - consumo_energia
+          provisiones_disponibles = provisiones_disponibles - consumo_provisiones
+          actividades_realizadas += 1
+          puntos_cientificos = puntos_cientificos + puntos_actividad
+
+          if selecion_actividad == OPCION_RECOLECTAR:
+
+                muestras_recolectadas += 1
+
+          print("Actividad realizada:", nombre_actividad,"." , "Puntos obtenidos", puntos_actividad)
+
+        else:
+            print("Recursos insuficiente para realizar la actividad. La exploración finaliza")
+            exploracion_activa = False
+
+# Salidas de resultados
+
+print("Actividades realizadas:", actividades_realizadas)
+print("Muestras recoloctadas:", muestras_recolectadas)
+print("Puntos científicos:", puntos_cientificos)
+print("Energía restante:", energia_disponible, "unidades")
+print("Provisiones restantes:", provisiones_disponibles, "unidades")
+
+
+# --------------------------------------------------
+# Ejercicio 8: Regreso y supervivencia de la tripulación
+# Misión Órbita
+# --------------------------------------------------
+
+# Constantes del programa
+CONSUMO_COMBUSTIBLE = 8
+CONSUMO_OXIGENO_PERSONA = 2
+CONSUMO_ENERGIA = 5
+CONSUMO_PROVISIONES_PERSONA = 1
+
+
+# Entrada de datos
+print("========================================")
+print("   REGRESO Y SUPERVIVENCIA - MISIÓN ÓRBITA")
+print("========================================")
+
+tripulantes = int(input("Ingrese la cantidad de tripulantes: "))
+dias_ida = int(input("Ingrese los días del viaje de ida: "))
+combustible = int(input("Ingrese el combustible disponible: "))
+oxigeno = int(input("Ingrese el oxígeno disponible: "))
+energia = int(input("Ingrese la energía disponible: "))
+provisiones = int(input("Ingrese las provisiones disponibles: "))
+
+
+# Cálculos iniciales
+combustible_necesario = dias_ida * CONSUMO_COMBUSTIBLE
+consumo_oxigeno = tripulantes * CONSUMO_OXIGENO_PERSONA
+consumo_provisiones = tripulantes * CONSUMO_PROVISIONES_PERSONA
+
+
+# Inicialización de variables
+dias_completados = 0
+dia_actual = 1
+regreso_activo = True
+
+
+# Verificación de combustible
+if combustible >= combustible_necesario:
+
+    print("\n========== INICIO DEL REGRESO ==========")
+
+    # Simulación del regreso día por día
+    while dia_actual <= dias_ida and regreso_activo:
+
+        print("\nDía", dia_actual)
+
+        if (combustible >= CONSUMO_COMBUSTIBLE and
+                oxigeno >= consumo_oxigeno and
+                energia >= CONSUMO_ENERGIA and
+                provisiones >= consumo_provisiones):
+
+            combustible = combustible - CONSUMO_COMBUSTIBLE
+            oxigeno = oxigeno - consumo_oxigeno
+            energia = energia - CONSUMO_ENERGIA
+            provisiones = provisiones - consumo_provisiones
+
+            dias_completados = dias_completados + 1
+
+            print("Día", dia_actual,
+                  "| Combustible:", combustible,
+                  "| Oxígeno:", oxigeno,
+                  "| Energía:", energia,
+                  "| Provisiones:", provisiones)
+
+            dia_actual = dia_actual + 1
+
+        else:
+
+            print("Recursos insuficientes para completar el día", dia_actual)
+
+            if combustible < CONSUMO_COMBUSTIBLE:
+                print("Combustible insuficiente.")
+
+            if oxigeno < consumo_oxigeno:
+                print("Oxígeno insuficiente.")
+
+            if energia < CONSUMO_ENERGIA:
+                print("Energía insuficiente.")
+
+            if provisiones < consumo_provisiones:
+                print("Provisiones insuficientes.")
+
+            regreso_activo = False
+
+    # Resultado del regreso
+    if dias_completados == dias_ida:
+
+        print("\nLa tripulación regresó exitosamente a la Tierra.")
+
+    else:
+
+        print("\nLa tripulación no completó el regreso.")
+
+    # Resumen de recursos
+    print("\n========== RESUMEN DEL REGRESO ==========")
+    print("Días completados:", dias_completados)
+    print("Combustible restante:", combustible)
+    print("Oxígeno restante:", oxigeno)
+    print("Energía restante:", energia)
+    print("Provisiones restantes:", provisiones)
+
+
+else:
+
+    # Caso B: combustible insuficiente
+    print("\nLa tripulación quedó varada en el destino.")
+
+    # Cálculo de días de supervivencia por recurso
+    dias_oxigeno = oxigeno // consumo_oxigeno
+    dias_energia = energia // CONSUMO_ENERGIA
+    dias_provisiones = provisiones // tripulantes
+
+    # Determinar el recurso que limita la supervivencia
+    supervivencia_estimada = dias_oxigeno
+
+    if dias_energia < supervivencia_estimada:
+        supervivencia_estimada = dias_energia
+
+    if dias_provisiones < supervivencia_estimada:
+        supervivencia_estimada = dias_provisiones
+
+    # Mostrar estimación de supervivencia
+    print("\n========== SUPERVIVENCIA ==========")
+    print("Días estimados de supervivencia:", supervivencia_estimada)
+
+    print("\nRecursos que limitan la supervivencia:")
+
+    if dias_oxigeno == supervivencia_estimada:
+        print("Oxígeno.")
+
+    if dias_energia == supervivencia_estimada:
+        print("Energía.")
+
+    if dias_provisiones == supervivencia_estimada:
+        print("Provisiones.")
+
+    print("\n========== RECURSOS DISPONIBLES ==========")
+    print("Combustible:", combustible)
+    print("Oxígeno:", oxigeno)
+    print("Energía:", energia)
+    print("Provisiones:", provisiones)
+
+
+# Fin del programa
